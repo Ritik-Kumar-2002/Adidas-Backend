@@ -4,9 +4,8 @@ const router = express.Router();
 const AuthUser = require("../entity/authUserModel")
 
 // CREATE USER API 
-// URLS IS : /adidas/createUser
+// URLS IS : /user/createUser
 router.post("/createUser", async (req, res)=> {
-    console.log("request body data is ", req.body)
     try{
         var user =  new  AuthUser(req.body);
         var createUser = await user.save();
@@ -16,7 +15,7 @@ router.post("/createUser", async (req, res)=> {
     }
 })
 
-// URL IS:  /adidas/getUsers
+// URL IS:  /user/getUsers
 // GET ALL USERS API
 router.get("/getUsers", async(req, res)=> {
     try{
@@ -46,7 +45,7 @@ router.get("/getUsers/:id",async (req, res)=> {
 })
 
 // DELETE USER BY ID API 
-// URLS IS : adidas/getUsers/:id
+// URLS IS : user/getUsers/:id
 router.delete("/getUsers/:id", async (req, res)=> {
     try{
         const deleteData = await AuthUser.findByIdAndDelete(req.params.id)
@@ -62,8 +61,8 @@ router.delete("/getUsers/:id", async (req, res)=> {
 })
 
 // UPDATE USER API CREATION 
-
-router.put("/getUsers/:id", async (req, res)=> {
+// url is user/Users/:id
+router.put("/Users/:id", async (req, res)=> {
     try{
         _id= req.params.id;
         const updated = await AuthUser.findByIdAndUpdate(_id, req.body);

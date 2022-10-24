@@ -16,7 +16,7 @@ Router.post("/islogin",async (req, res)=> {
     try{
         const islogin = await AuthUser.find({"email": req.body.email});
 
-        console.log("is login is ", islogin);
+        // console.log("is login is ", islogin);
         if(islogin.length !== 0){
             if(password === islogin[0].password){
                 res.status(200).send(islogin);
